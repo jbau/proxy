@@ -1,2 +1,0 @@
-# proxy
-Wavefront Proxy Agent
