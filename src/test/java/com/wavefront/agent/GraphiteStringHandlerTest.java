@@ -34,7 +34,8 @@ public class GraphiteStringHandlerTest {
     String expected2 = "collectd.cpu.loadavg.1m 40 1415233342 source=www02.web.bigcorp.com";
 
     // Test basic functionality with correct input
-    GraphiteFormatter formatter = new GraphiteFormatter(format, delimiter);String output1 = formatter.format(testString1);
+    GraphiteFormatter formatter = new GraphiteFormatter(format, delimiter);
+    String output1 = formatter.format(testString1);
     Assert.assertEquals(expected1, output1);
     String output2 = formatter.format(testString2);
     Assert.assertEquals(expected2, output2);
@@ -70,9 +71,9 @@ public class GraphiteStringHandlerTest {
 
     // Report/validate performance
     logger.error(" Time to parse 1M strings: " + (end - start) + " ns for " + formatter.getOps() + " runs");
-    long nsPerOps = (end-start)/formatter.getOps();
+    long nsPerOps = (end - start) / formatter.getOps();
     logger.error(" ns per op: " + nsPerOps + " and ops/sec " + (1000 * 1000 * 1000 / nsPerOps));
-    Assert.assertTrue(formatter.getOps() >= 1000*1000);  // make sure we actually ran it 1M times
+    Assert.assertTrue(formatter.getOps() >= 1000 * 1000);  // make sure we actually ran it 1M times
     Assert.assertTrue(nsPerOps < 10 * 1000); // make sure it was less than 10 μs per run; it's around 1 μs on my machine
   }
 
